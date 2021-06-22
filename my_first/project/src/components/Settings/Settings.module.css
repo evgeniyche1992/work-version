@@ -1,0 +1,38 @@
+.mainSettings {
+    font-size: 24px;
+    text-align: center;
+
+}
+
+.all {
+    display: grid;
+    font-size: 20px;
+    grid-template-areas: "p s" "c d";
+    grid-template-rows: 200px 200px;
+}
+
+.privacy {
+    grid-area: p;
+    margin: 20px;
+}
+
+.storage {
+    grid-area: s;
+    margin: 20px;
+}
+
+.chat {
+    grid-area: c;
+    margin: 20px;
+}
+
+.devices {
+    grid-area: d;
+    margin: 20px;
+}
+
+.button {
+    width: 200px;
+    height: 50px;
+
+}

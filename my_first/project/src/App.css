@@ -1,0 +1,28 @@
+.app-wrapper {
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+  "h h" 
+  "n c"
+    "d d";
+    grid-template-rows: 150px 1fr  100px;
+    grid-template-columns: 2fr 10fr;
+    width: 1400px;
+}
+
+.app-wrapper-content {
+    grid-area: c;
+    background-color: #E8EAE6;
+
+    /* border-radius: 20px;*/
+
+
+}
+
+
+
+.shapka {
+    width: 0 auto;
+    margin-left: 50px;
+    margin-top: 10px;
+}

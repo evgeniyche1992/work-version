@@ -1,0 +1,19 @@
+.friends {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+      margin-top: 12px;
+    font-family: "Californian FB";
+    font-size: 20px;
+    text-decoration: none;
+    }
+.image{
+    width: 50px;
+    border-radius: 25px;
+    margin-left: 15px;
+}
+.item{
+text-align: center;
+}
+.fry{
+    margin-top: 15px;
+}

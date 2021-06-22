@@ -1,0 +1,33 @@
+.allMain {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    margin-left: 200px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.photo {
+    width: 80px;
+}
+
+.textBlock {
+    border: 1px solid gray;
+    width: 500px;
+}
+
+.button {
+    margin-left: 210px;
+}
+
+.status {
+    text-align: right;
+    margin-top: 50px;
+}
+.selected {
+        background-color: wheat;
+}
+.number{
+    text-align: center;
+margin-top: 20px;
+}
+
