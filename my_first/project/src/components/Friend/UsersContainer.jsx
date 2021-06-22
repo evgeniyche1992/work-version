@@ -14,22 +14,13 @@ import {usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.getUserThunkCreator();
-       /* this.props.toggleIsFetching(true);
-        usersAPI.getUser(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setUsersTotalCount(data.totalCount)
-        });*/
-    }
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+         }
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        usersAPI.getUser(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.setUsers(data.items)
-            });
-    }
+        this.props.getUsers(pageNumber, this.props.pageSize);
+    };
+
 
     render() {
         return <>
@@ -60,33 +51,10 @@ let mapStateToProps = (state) => {
 
     }
 }
-/*let mapDispatchToProps = (dispatch) => {
-
-    return {
-        follows: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber));
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching));
-        }
-    }
-}*/
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setCurrentPage,
-    toggleIsFetching,
-    setUsersTotalCount,
     setFollowUser,
-    getUserThunkCreator,
+    getUsers: getUserThunkCreator,
 })(UsersContainer);
