@@ -7,7 +7,9 @@ import {
     toggleIsFetching,
     setUsers,
     unfollow,
-    setUsersTotalCount, setFollowUser, getUserThunkCreator
+    setUsersTotalCount,
+    setFollowUser,
+    getUserThunkCreator
 } from '../../redux/users-reducer' ;
 import Preloader from '../Common/Preloader';
 import {usersAPI} from "../../api/api";
@@ -15,7 +17,7 @@ import {usersAPI} from "../../api/api";
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
-         }
+    }
 
     onPageChanged = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageSize);
@@ -33,7 +35,6 @@ class UsersContainer extends React.Component {
                 user={this.props.user}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
-                setFollowUser={this.props.setFollowUser}
                 followingUser={this.props.followingUser}
             />
         </>
@@ -47,7 +48,7 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        followingUser:state.usersPage.followingUser,
+        followingUser: state.usersPage.followingUser,
 
     }
 }

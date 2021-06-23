@@ -34,29 +34,31 @@ let Users = (props) => {
             <span>
             <div className={users.button}>
                 {u.followed ?
-                    <button disabled={props.followingUser.some(id=>id==u.id)} onClick={() => {
-                        props.setFollowUser(true, u.id);
-                        followAPI.unfollowing(u.id).then(data => {
-                            if (data.resultCode === 0) {
-                                props.follow(u.id);
-                            }props.setFollowUser(false, u.id);
-                            ;
-                        })
+                    <button disabled={props.followingUser
+                        .some(id => id == u.id)} onClick={() => {
+                        props.unfollow(u.id);
+                        /* props.setFollowUser(true, u.id);
+                         followAPI.unfollowing(u.id)
+                             .then(data => {
+                             if (data.resultCode == 0) {
+                                 props.follow(u.id);
+                             }props.setFollowUser(false, u.id);
+                             ;
+                         })*/
                     }}>Unfollow</button> :
-                    <button disabled={props.followingUser.some(id=>id==u.id)} onClick={() => {
-                        props.setFollowUser(true, u.id);
+                    <button disabled={props.followingUser.some(id => id == u.id)} onClick={() => {
+                        props.follow(u.id);
+                        /*props.setFollowUser(true, u.id);
                         followAPI.following(u.id).then(data => {
-                            if (data.resultCode === 0) {
+                            if (data.resultCode == 0) {
                                 props.unfollow(u.id);
                             }props.setFollowUser(false, u.id);
                             ;
-                        })
+                        })*/
                     }}>Follow</button>}
             </div>
         </span>
         </div>)}
     </div>
 }
-
-
 export default Users;
