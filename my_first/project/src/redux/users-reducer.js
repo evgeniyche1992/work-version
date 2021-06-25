@@ -109,7 +109,8 @@ export const unfollow = (userId) => {
                     dispatch(unfollowSuccess(userId));
                 }
                 dispatch(setFollowUser(false, userId));
-                ;})
+                ;
+            })
     }
 }
 export default usersReducer;

@@ -1,3 +1,6 @@
+import {usersAPI} from "../api/api";
+import {setUsers, setUsersTotalCount, toggleIsFetching} from "./users-reducer";
+
 const addPost = 'ADD-POST';
 const updatePost = 'UPDATE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -39,9 +42,10 @@ const profileReducer = (state = initialState, action) => {
                 postData: [...state.postData, newPost],
                 newPostText: '',
             };
-        case SET_USER_PROFILE:{
+        case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
-};
+        }
+            ;
         default:
             return state;
     }
@@ -49,5 +53,15 @@ const profileReducer = (state = initialState, action) => {
 export const addPostAC = () => ({type: addPost});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const updateNewPostText = (text) => ({type: updatePost, newText: text});
+
+export const getUserId = (userId) => {
+    return (dispatch) => {
+        usersAPI.getUserProfile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data));
+            });
+    }
+}
+
 export default profileReducer;
 

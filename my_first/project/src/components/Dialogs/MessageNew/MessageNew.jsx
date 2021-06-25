@@ -5,9 +5,6 @@ import dialogs from "../Dialogs.module.css";
 
 const MessageNew = (props) => {
     let message = props.txt.map(m => <Message message={m.message} key={m.id} id={m.id}/>);
-
-
-
     let but = () => {
         props.sendMessage();
     }

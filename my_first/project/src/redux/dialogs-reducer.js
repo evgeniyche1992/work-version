@@ -40,7 +40,7 @@ const dialogReducer = (state = initialState, action) => {
         default:
             return state;
     }
-    ;
+
 }
 export const sendMessageActionCreator = () => ({type: sendMessage});
 export const updateMessageActionCreator = (newMessage) => ({type: updateMessage, newMessageElement: newMessage});

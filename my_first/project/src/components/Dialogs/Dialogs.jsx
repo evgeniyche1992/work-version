@@ -4,14 +4,13 @@ import DilaogItemNew from "./DialogItemNew/DilaogItemNew";
 import MessageNewContainer from "./MessageNew/MessageNewContainer";
 
 const Dialogs = (props) => {
-    let state = props.store.getState().messagePage;
-    return (
+        return (
         <div className={dialogs.dialogs}>
             <div className={dialogs.dialogsItems}>
-                <DilaogItemNew users={state.dialogsElement}/>
+                <DilaogItemNew users={props.store.dialogsElement}/>
             </div>
             <div className={dialogs.messages}>
-                <MessageNewContainer  store={props.store}/>
+                <MessageNewContainer store={props.store}/>
             </div>
         </div>
     )
