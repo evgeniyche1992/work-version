@@ -1,3 +1,9 @@
+.mainHeader {
+    padding-left: 350px;
+    font-family: Batang;
+    font-size: 120px;
+}
+
 .header {
     grid-area: h;
     margin-top: 12.5px;
@@ -9,14 +15,17 @@
     /*padding-top: 60px;*/
     color: #d99766;
 }
-.authBlock{
+
+.authBlock {
     float: right;
 }
-.authBlock a{
+
+.authBlock a {
     color: #d99766;
 }
-.picture{
-    width:50px;
+
+.picture {
+    width: 50px;
 }
 
 /* .header img{

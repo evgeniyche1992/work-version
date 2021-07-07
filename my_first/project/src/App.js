@@ -13,14 +13,15 @@ import Login from "./components/Login/Login";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
-      return (
+    return (
         <div>
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <Nav/>
                 <div className='app-wrapper-content'>
-                    <Route path="/dialogs"
-                           render={() => <DialogsContainer store={props.store}/>}/>
+                    <Route
+                        path="/dialogs"//Route используется для маршрутизации между страницами и отрисовки конкретного элемента
+                        render={() => <DialogsContainer store={props.store}/>}/>
                     <Route path="/profile/:userId?"
                            render={() => <MainContainer store={props.store}/>}/>
                     <Route path="/news"

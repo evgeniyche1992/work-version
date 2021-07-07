@@ -15,6 +15,6 @@ ReactDOM.render(
                 <App store={store} />
             </React.StrictMode>
         </Provider>
-    </BrowserRouter>,
+    </BrowserRouter>,// Оборачивается для дальнейшего использования при маршрутизации
     document.getElementById('root'));
 

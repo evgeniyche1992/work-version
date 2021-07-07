@@ -2,7 +2,9 @@ import React from 'react';
 import Main from "./Main";
 import {connect} from "react-redux";
 import {getUserId} from "../../redux/profile-reducer";
-import {Redirect,withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class MainContainer extends React.Component {
     componentDidMount() {
@@ -10,24 +12,35 @@ class MainContainer extends React.Component {
         if (!userId) {
             userId = 17280
         }
-        this.props.getUserId(userId);
+        this.props.getUserId(userId);//запрос на API по поиску id пользователя для дальнейшей прорисовки на странице профиля
     }
 
     render() {
-        if (!this.props.isAuth)return <Redirect to='/login'/>
-        return (<Main {...this.props}
-                      profile={this.props.profile}
+        return (
+            <Main {...this.props} //отрисовка презентационного компонента (UI) с деструктуризацией и дальнейщим прокидыванием пропсов и профиля
+                  profile={this.props.profile}
 
-        />)
+            />)
     }
 }
 
 let mapStateToProps = (state) => {
     return (
         {
-            profile: state.mainPage.profile,
-            isAuth:state.auth.isAuth,
+            profile: state.mainPage.profile, //props для прокидывания
         })
 };
-let WithRouterComponent = withRouter(MainContainer);
-export default connect(mapStateToProps, {getUserId})(WithRouterComponent)
+
+export default compose  (    //функция compose из функционального программирования предназначена для обьединения
+   // withAuthRedirect,        //HOC(вызывается последовательно, как и написано),уменьшения кода
+    withRouter,
+    connect(mapStateToProps, {getUserId})
+)(MainContainer)
+
+/*
+let AuthRedirectComponent = withAuthRedirect(MainContainer);//HOC включения авторизации для главной страницы профиля
+
+let WithRouterComponent = withRouter(AuthRedirectComponent); //Используется для отображения конкретного пользователя
+//заданного в URL
+
+export default connect(mapStateToProps, {getUserId})(WithRouterComponent)//connect для подключения MSTP и MSTD*/
