@@ -2,7 +2,6 @@ import React from 'react'
 import users from './users.module.css'
 import userPhoto from "../../pictures/noPhoto.png"
 import {NavLink} from 'react-router-dom/cjs/react-router-dom.min';
-import {followAPI} from "../../api/api";
 
 let Users = (props) => {
 

@@ -18,7 +18,7 @@ const ProfileInfo = (props) => {
                 <img src={props.profile.photos.large}/>
                 <div>About me: {props.profile.aboutMe}</div>
                 <div>Looking for a job: {props.profile.lookingForAJobDescription}</div>
-                <div><ProfileStatus status={"Status bar"} //создание классового компонента статус бара для отображения и замены статуса пользователя
+                <div><ProfileStatus status={props.status} updateStatus={props.updateStatus} //создание классового компонента статус бара для отображения и замены статуса пользователя
                 /></div>
                 <div></div>
             </div>

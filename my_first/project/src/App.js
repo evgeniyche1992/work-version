@@ -9,8 +9,8 @@ import Footer from "./components/Footer/Footer";
 import UsersContainer from "./components/Friend/UsersContainer";
 import MainContainer from "./components/Main/MainContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import LoginForm from "./components/Login/Login";
 
 const App = (props) => {
     return (
@@ -33,7 +33,7 @@ const App = (props) => {
                     <Route path="/users"
                            render={() => <UsersContainer users={props.store}/>}/>
                     <Route path="/login"
-                           render={() => <Login/>}/>
+                           render={() => <LoginForm/>}/>
                 </div>
                 <Footer/>
             </div>

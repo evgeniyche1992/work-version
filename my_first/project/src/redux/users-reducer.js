@@ -1,4 +1,4 @@
-import {authAPI, followAPI, usersAPI} from "../api/api";
+import {followAPI, usersAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -59,7 +59,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingUser: action.isFetching
                     ? [...state.followingUser, action.userId]
-                    : [state.followingUser.filter(id => id != action.userId)]
+                    : [state.followingUser.filter(id => id !== action.userId)]
             }
         }
         default:

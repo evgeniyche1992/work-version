@@ -41,6 +41,20 @@ export const authAPI = {
             return response.data.photos;
         });
     },
+    logIn(id,email,password) {
+        return instance.post(`profile/login`).then(response => {
+            return response.data;
+        })
+    }
 };
-export const profileAPI = {};
+export const profileAPI = {
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId).then(response => {
+            return response.data;
+        })
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status/`, {status: status});
+    }
+};
 export const securityAPI = {};
