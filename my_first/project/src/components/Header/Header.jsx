@@ -11,7 +11,7 @@ const Header = (props) => {
                 <span><img className={css.picture} src={props.isAuth && !props.photo ? noPhoto : props.photo}/>
                 </span>
             </span>
-            <span className={css.mainHeader}>Activity LiFe</span>
+            <span className={css.mainHeader}>Name</span>
             {/*функция показывет , что если ты залогинен,
             то покажет имя, если нет, то покажет ссылку на Login*/}
         </header>
