@@ -1,0 +1,19 @@
+.dialog {
+
+    color: black;
+    font-size: 25px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    background-color: #CDD0CB;
+
+}
+
+.dialog.active {
+    color: rgb(26, 103, 103);
+}
+
+.dialog:hover {
+    color: #007965;
+
+}

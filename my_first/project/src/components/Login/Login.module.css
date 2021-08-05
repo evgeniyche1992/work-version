@@ -1,0 +1,29 @@
+.auth {
+    color: #d99713;
+    font-size: 40px;
+    font-family: "Droid Sans";
+    margin-left: 180px;
+
+}
+
+.authStr {
+    margin-left: 350px;
+    margin-top: 10px;
+
+}
+
+.authInput {
+    margin-left: 32px;
+}
+
+.buttOn {
+    margin-left: 440px;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+.image {
+    width: 30px;
+    resize: none;
+}
