@@ -8,13 +8,14 @@ import {compose} from "redux";
 
 class MainContainer extends React.Component {
     componentDidMount() {
-        let userId = this.props.match.params.userId;
-        if (!userId) {
-            userId = 17280
+        let userID = this.props.match.params.userId;
+        if (!userID) {
+            let userId = this.props.idEnter;
+            userID = userId;
         }
-        this.props.getUserId(userId);//запрос на API по поиску id пользователя для дальнейшей прорисовки на странице профиля
-        this.props.getProfileStat(userId);
-            }
+        this.props.getUserId(userID);//запрос на API по поиску id пользователя для дальнейшей прорисовки на странице профиля
+        this.props.getProfileStat(userID);
+    }
 
     render() {
         return (
@@ -28,14 +29,16 @@ let mapStateToProps = (state) => {
     return (
         {
             profile: state.mainPage.profile, //props для прокидывания
-            status:state.mainPage.status
+            status: state.mainPage.status,
+            isAuth: state.auth.isAuth,
+            idEnter: state.auth.userId,
         })
 };
 
-export default compose  (    //функция compose из функционального программирования предназначена для обьединения
-   // withAuthRedirect,        //HOC(вызывается последовательно, как и написано),уменьшения кода
-        connect(mapStateToProps, {getUserId, getProfileStat, updateProfileStat}),
-withRouter
+export default compose(    //функция compose из функционального программирования предназначена для обьединения
+    withAuthRedirect,        //HOC(вызывается последовательно, как и написано),уменьшения кода
+    connect(mapStateToProps, {getUserId, getProfileStat, updateProfileStat}),
+    withRouter
 )(MainContainer)
 
 /*

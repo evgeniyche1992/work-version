@@ -41,8 +41,13 @@ export const authAPI = {
             return response.data.photos;
         });
     },
-    logIn(id,email,password) {
-        return instance.post(`profile/login`).then(response => {
+    logIN(email,password,rememberMe=false) {
+        return instance.post(`auth/login`,{email,password,rememberMe}).then(response => {
+            return response.data;
+        })
+    },
+    logOUT(){
+        return instance.delete(`auth/login`).then(response =>{
             return response.data;
         })
     }
@@ -57,4 +62,10 @@ export const profileAPI = {
         return instance.put(`profile/status/`, {status: status});
     }
 };
-export const securityAPI = {};
+export const securityAPI = {
+    getCaptcha() {
+        return instance.get(`/security/get-captcha-url` ).then(response => {
+            return response.data;
+        })
+    }
+};

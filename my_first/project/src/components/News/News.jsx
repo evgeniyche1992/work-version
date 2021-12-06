@@ -3,10 +3,10 @@ import news from './News.module.css'
 import FeedsNew from "./FeedsNew/FeedsNew";
 
 const News = (props) => {
-    let state = props.store.getState().newsPage;
+    let state = props.news;
     return (
         <div className={news.nov}>
-            <FeedsNew news={state.news}/>
+            <FeedsNew news={state}/>
         </div>
     )
 }

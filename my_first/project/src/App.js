@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Nav from './components/Nav/Nav';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
+import {compose} from "redux";
+import {connect} from "react-redux";
 import Footer from "./components/Footer/Footer";
 import UsersContainer from "./components/Friend/UsersContainer";
 import MainContainer from "./components/Main/MainContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import LoginForm from "./components/Login/Login";
+import {initializeApp} from "./redux/app-reducer";
+import Preloader from './components/Common/Preloader';
 
-const App = (props) => {
+
+class App extends Component  {
+
+componentDidMount(){
+    this.props.initializeApp();
+}
+
+    render(){
+        debugger;
+        if(!this.props.initialized){//если приложение не проинициализировалось,то показываем загрузку
+return<Preloader/>}
+
+
+
     return (
         <div>
             <div className='app-wrapper'>
@@ -21,17 +38,17 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     <Route
                         path="/dialogs"//Route используется для маршрутизации между страницами и отрисовки конкретного элемента
-                        render={() => <DialogsContainer store={props.store}/>}/>
+                        render={() => <DialogsContainer />}/>
                     <Route path="/profile/:userId?"
-                           render={() => <MainContainer store={props.store}/>}/>
+                           render={() => <MainContainer />}/>
                     <Route path="/news"
-                           render={() => <News store={props.store}/>}/>
+                           render={() => <News news={this.props.news}/>}/>
                     <Route path="/music"
                            render={() => <Music/>}/>
                     <Route path="/settings"
                            render={() => <Settings/>}/>
                     <Route path="/users"
-                           render={() => <UsersContainer users={props.store}/>}/>
+                           render={() => <UsersContainer />}/>
                     <Route path="/login"
                            render={() => <LoginForm/>}/>
                 </div>
@@ -39,5 +56,12 @@ const App = (props) => {
             </div>
         </div>
     );
-}
-export default App;
+}}
+
+const mapStateToProps = (state)=>({
+initialized: state.app.initialized,
+news:state.newsPage.news,
+})
+export default compose (//оборачивание  HOC ом (компонентой высшего порядка)
+     connect(mapStateToProps, {initializeApp}),
+     withRouter)(App);
