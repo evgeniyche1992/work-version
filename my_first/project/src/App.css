@@ -2,8 +2,8 @@
     margin: 0 auto;
     display: grid;
     grid-template-areas:
-  "h h" 
-  "n c"
+    "h h" 
+    "n c"
     "d d";
     grid-template-rows: 150px 1fr  100px;
     grid-template-columns: 2fr 10fr;

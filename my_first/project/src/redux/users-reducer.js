@@ -17,9 +17,11 @@ let initialState = {
     followingUser: [],
 
 }
+
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
+
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -76,10 +78,11 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const setFollowUser = (isFetching, userId) => ({type: SET_FOLLOWING_USER, isFetching, userId})
 
 
-export const getUserThunkCreator = (currentPage, pageSize) => {
+export const getUserThunkCreator = (pageNumber, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        usersAPI.getUser(currentPage, pageSize).then(data => {
+        dispatch(setCurrentPage(pageNumber));
+        usersAPI.getUser(pageNumber, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(data.items));
             dispatch(setUsersTotalCount(data.totalCount))

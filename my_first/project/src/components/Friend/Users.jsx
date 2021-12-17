@@ -1,7 +1,7 @@
 import React from 'react'
 import users from './users.module.css'
 import userPhoto from "../../pictures/noPhoto.png"
-import {NavLink} from 'react-router-dom/cjs/react-router-dom.min';
+import {NavLink} from 'react-router-dom';
 
 let Users = (props) => {
 
@@ -10,7 +10,7 @@ let Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    return <div>
+    return <div> 
         <div className={users.number}> {pages.map(p => {
             return <span className={props.currentPage === p && users.selected}
                          onClick={() => {
@@ -33,8 +33,7 @@ let Users = (props) => {
             <span>
             <div className={users.button}>
                 {u.followed ?
-                    <button disabled={props.followingUser
-                        .some(id => id == u.id)} onClick={() => {
+                    <button disabled={props.followingUser.some(id => id == u.id)} onClick={() => {
                         props.unfollow(u.id);
                         /* props.setFollowUser(true, u.id);
                          followAPI.unfollowing(u.id)

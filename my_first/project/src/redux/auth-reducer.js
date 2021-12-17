@@ -44,13 +44,16 @@ export const setSecurityCaptcha = (captcha) => ({type: SET_CAPTCHA, securityCapt
 
 export const authority = () =>(dispatch)=> {
      
-     return   authAPI.authorized() //бязательно ставим return, для того чтобы пришли промисы, где дальше исполбзую в app-reducer для выполнения инициализации приложения
+     return   authAPI.authorized() //обязательно ставим return, для того чтобы пришли промисы, где дальше исполбзую в app-reducer для выполнения инициализации приложения
      .then(
             data => {
                 if (data.resultCode === 0) {
                     let {id, login, email} = data.data;
                     dispatch(setUserData(id, email, login, true));
-                                    }
+                    authAPI.getUserPhoto(id).then(photos => {
+                        dispatch(setUserPhoto(photos.small));
+                    });
+                            }//сюда необходимо вставить скрипт для вытаскивания фото из API(аватарка)
             });
     
 }
@@ -64,7 +67,9 @@ export const logIn = (email, password, rememberMe) => {
                     let messageError = data.messages.length>0?data.messages[0]:"Some error";
                     dispatch(stopSubmit("login",{_error:messageError}));
                 }
-            });
+                
+                }
+            );
     }
 }
 export const logOut = () => {

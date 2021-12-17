@@ -18,7 +18,7 @@ const Header = (props) => {
                         </span>
                     : <NavLink to={'/login'}>Login</NavLink>}</span>
             </div>
-            <span className={css.mainHeader}>Name</span>
+            <span className={css.mainHeader}>First SPA</span>
             {/*функция показывет , что если ты залогинен,
             то покажет имя, если нет, то покажет ссылку на Login*/}
         </header>

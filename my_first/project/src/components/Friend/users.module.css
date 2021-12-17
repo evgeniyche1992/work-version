@@ -24,10 +24,14 @@
     margin-top: 50px;
 }
 .selected {
-        background-color: wheat;
+background-color: wheat;
+
 }
 .number{
     text-align: center;
-margin-top: 20px;
+margin: 20px 5px 20px 5px;
+}
+.number:hover{
+    cursor: pointer;
 }
 

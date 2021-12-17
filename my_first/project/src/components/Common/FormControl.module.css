@@ -11,3 +11,10 @@
     color: pink;
     border: plum solid 2px;
 }
+.preloaderSpin{
+text-align: center;
+max-height: 1920px;
+min-height: 700px;
+line-height: 900px;
+background-color: rgba(218, 251, 255, 0.507);
+}

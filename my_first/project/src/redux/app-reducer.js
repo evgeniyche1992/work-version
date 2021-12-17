@@ -23,8 +23,8 @@ export const ssuccesInitialized = () => ({type: INITIALIZE_SUCCES});
 
 export const initializeApp = () => (dispatch)=>{
     
-    let abc = dispatch(authority());
-    Promise.all([abc]) //это делается для того, чтобы ждать пока все промисы придут, а потом только иницализировать приложение
+    let authorizationApp = dispatch(authority());
+    Promise.all([authorizationApp]) //это делается для того, чтобы ждать пока все промисы придут, а потом только иницализировать приложение
     .then(()=>{dispatch(ssuccesInitialized())});
 }
 

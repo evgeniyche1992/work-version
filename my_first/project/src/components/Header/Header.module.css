@@ -1,32 +1,42 @@
 .mainHeader {
-    padding-left: 350px;
-    font-family: Batang;
+    font-family: roboto;
     font-size: 120px;
+    line-height: 150px;
+    letter-spacing: 5px;
+    grid-area: n;
+    text-align: center;    
 }
 
 .header {
     grid-area: h;
-    margin-top: 12.5px;
     background: #007965;
-    font-family: "Californian FB";
-    /*font-size: 100px;*/
-    /*position: static;*/
-    /*padding-left: 210px;*/
-    /*padding-top: 60px;*/
+    font-family: roboto;
     color: #d99766;
+    display:grid;
+    grid-template-areas: "n b";
+    grid-template-columns: 9fr 1fr;
 }
 
 .authBlock {
     float: right;
+    margin:10px 20px;
+    width:100px;
+    height: 120px;
+    text-align: center;
+    grid-area: b;
 }
 
 .authBlock a {
     color: #d99766;
 }
+.authBlock a:hover{
+    color:gray;
+}
 
 .picture {
-    width: 50px;
-    margin-left: 15px;
+    width: 60px;
+    margin:8px 0 8px 0;
+    border-radius: 30px;
 }
 
 /* .header img{

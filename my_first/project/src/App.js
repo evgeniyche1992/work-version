@@ -16,20 +16,13 @@ import LoginForm from "./components/Login/Login";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from './components/Common/Preloader';
 
-
 class App extends Component  {
-
 componentDidMount(){
     this.props.initializeApp();
 }
-
     render(){
-        debugger;
         if(!this.props.initialized){//если приложение не проинициализировалось,то показываем загрузку
 return<Preloader/>}
-
-
-
     return (
         <div>
             <div className='app-wrapper'>
@@ -62,6 +55,6 @@ const mapStateToProps = (state)=>({
 initialized: state.app.initialized,
 news:state.newsPage.news,
 })
-export default compose (//оборачивание  HOC ом (компонентой высшего порядка)
+export default compose (//оборачивание  HOC-ом (компонентой высшего порядка)
      connect(mapStateToProps, {initializeApp}),
      withRouter)(App);
